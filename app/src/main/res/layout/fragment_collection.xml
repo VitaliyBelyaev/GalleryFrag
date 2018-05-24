@@ -3,9 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
-    android:layout_marginTop="20dp"
-    android:layout_marginHorizontal="6dp">
+    android:orientation="vertical">
 
     <TextView
         android:id="@+id/tv_collection_title"
@@ -16,12 +14,15 @@
         android:textSize="24sp"
         android:fontFamily="sans-serif-condensed"
         tools:text ="Collection title"
-        android:layout_gravity="center_horizontal"/>
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="10dp"/>
 
     <ImageView
         android:id="@+id/collection_image"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:scaleType="centerCrop"
         android:layout_weight="8"/>
 
     <TextView
@@ -29,7 +30,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="3"
-        android:padding="4dp"
+        android:layout_marginTop="10dp"
         android:fontFamily="sans-serif-condensed"
         tools:text ="Collection description"
         android:layout_gravity="center_horizontal"/>

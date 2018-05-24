@@ -4,7 +4,7 @@
     android:id="@+id/image_view"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:scaleType="fitStart"
+    android:scaleType="centerCrop"
     android:adjustViewBounds="true"
     android:paddingTop="2dp"
     android:paddingRight="1dp"

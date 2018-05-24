@@ -31,6 +31,8 @@ public class PreviewFragment extends Fragment {
 
         final int collectionId = getArguments().getInt(ARG_COLLECTION_ID);
         collection = CollectionsRepository.getInstance().getById(collectionId);
+
+        setHasOptionsMenu(true);
     }
 
     @Nullable

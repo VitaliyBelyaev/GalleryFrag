@@ -13,11 +13,11 @@ import com.squareup.picasso.Picasso;
 import java.util.Collections;
 import java.util.List;
 
-public class PhotosAdapter extends RecyclerView.Adapter<PhotosAdapter.PhotoVH>{
+public class PhotosAdapter extends RecyclerView.Adapter<PhotosAdapter.PhotoVH> {
 
     private List<PreviewPhoto> previewPhotos = Collections.EMPTY_LIST;
 
-    public PhotosAdapter(List<PreviewPhoto> previewPhotos){
+    public PhotosAdapter(List<PreviewPhoto> previewPhotos) {
         this.previewPhotos = previewPhotos;
     }
 
@@ -43,7 +43,7 @@ public class PhotosAdapter extends RecyclerView.Adapter<PhotosAdapter.PhotoVH>{
         return previewPhotos.size();
     }
 
-    public class PhotoVH extends RecyclerView.ViewHolder{
+    public class PhotoVH extends RecyclerView.ViewHolder {
 
         ImageView imageView;
 
@@ -51,6 +51,7 @@ public class PhotosAdapter extends RecyclerView.Adapter<PhotosAdapter.PhotoVH>{
             super(itemView);
 
             this.imageView = itemView.findViewById(R.id.image_view);
+
         }
     }
 }
