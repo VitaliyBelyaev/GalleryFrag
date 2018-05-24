@@ -35,8 +35,6 @@ public class NetworkModule {
         final OkHttpClient okHttpClient = provideOkHttp(context.getCacheDir(), interceptor);
         final Retrofit retrofit = provideRetrofit(okHttpClient);
         api = retrofit.create(Api.class);
-
-        providePicasso(context, okHttpClient);
     }
 
     public Api getApi() {
@@ -92,11 +90,4 @@ public class NetworkModule {
                 .build();
     }
 
-    private void providePicasso(Context context,OkHttpClient okHttpClient){
-        final Picasso picasso = new Picasso.Builder(context)
-                .downloader(new OkHttp3Downloader(okHttpClient))
-                .build();
-
-        Picasso.setSingletonInstance(picasso);
-    }
 }

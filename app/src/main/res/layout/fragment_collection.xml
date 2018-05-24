@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_marginTop="20dp"
+    android:layout_marginHorizontal="6dp">
+
+    <TextView
+        android:id="@+id/tv_collection_title"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:textStyle="bold"
+        android:textSize="24sp"
+        android:fontFamily="sans-serif-condensed"
+        tools:text ="Collection title"
+        android:layout_gravity="center_horizontal"/>
+
+    <ImageView
+        android:id="@+id/collection_image"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="8"/>
+
+    <TextView
+        android:id="@+id/tv_description"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3"
+        android:padding="4dp"
+        android:fontFamily="sans-serif-condensed"
+        tools:text ="Collection description"
+        android:layout_gravity="center_horizontal"/>
+
+</LinearLayout>

@@ -18,16 +18,13 @@ public class PreviewPhoto {
         @Expose
         private String thumb;
 
-        public String getSmall() {
-            return small;
-        }
-
-        public String getThumb() {
-            return thumb;
-        }
     }
 
-    public Urls getUrls() {
-        return urls;
+    public String getUrlSmall() {
+        return urls.small;
+    }
+
+    public String getUrlThumb() {
+        return urls.thumb;
     }
 }
