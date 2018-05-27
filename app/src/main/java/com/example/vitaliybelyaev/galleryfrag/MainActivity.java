@@ -1,16 +1,12 @@
 package com.example.vitaliybelyaev.galleryfrag;
 
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class MainActivity extends FragmentActivity
+public class MainActivity extends AppCompatActivity
         implements CollectionFragment.CollectionFragmentListener {
 
 
@@ -22,7 +18,23 @@ public class MainActivity extends FragmentActivity
         if(savedInstanceState == null){
             openFragment(MainFragment.newInstance(),false);
         }
+
+        getSupportFragmentManager().addOnBackStackChangedListener(new FragmentManager.OnBackStackChangedListener() {
+            @Override
+            public void onBackStackChanged() {
+                boolean showAsUp = getSupportFragmentManager().getBackStackEntryCount()>0;
+                getSupportActionBar().setDisplayHomeAsUpEnabled(showAsUp);
+            }
+        });
     }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        getSupportFragmentManager().popBackStack();
+        return true;
+    }
+
+
 
     @Override
     public void onPreviewClick(int collectionId) {

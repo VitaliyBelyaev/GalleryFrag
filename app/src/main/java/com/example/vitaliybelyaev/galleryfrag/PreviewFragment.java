@@ -5,10 +5,17 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.customtabs.CustomTabsIntent;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -22,8 +29,6 @@ public class PreviewFragment extends Fragment {
     private Collection collection;
     private PhotosAdapter adapter;
     private RecyclerView recyclerView;
-    private ImageView closeImageView;
-    private Button openButton;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -35,6 +40,26 @@ public class PreviewFragment extends Fragment {
         setHasOptionsMenu(true);
     }
 
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.preview, menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.open_link) {
+            Uri webpage = Uri.parse(collection.getLink());
+            CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
+            builder
+                    .setToolbarColor(ContextCompat.getColor(getContext(),R.color.colorPrimary))
+                    .addDefaultShareMenuItem();
+
+            CustomTabsIntent customTabsIntent = builder.build();
+            customTabsIntent.launchUrl(getContext(), webpage);
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -44,8 +69,6 @@ public class PreviewFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_preview, container, false);
 
         recyclerView = view.findViewById(R.id.recycler_view);
-        closeImageView = view.findViewById(R.id.close_icon);
-        openButton = view.findViewById(R.id.view_button);
 
         return view;
     }
@@ -54,30 +77,13 @@ public class PreviewFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        recyclerView.setLayoutManager(new GridLayoutManager(getContext(),2));
+        recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
         adapter = new PhotosAdapter(collection.getPreviewPhotos());
         recyclerView.setAdapter(adapter);
 
-        openButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Uri webpage = Uri.parse(collection.getLink());
-                Intent intent = new Intent(Intent.ACTION_VIEW, webpage);
-                if (intent.resolveActivity(getActivity().getPackageManager()) != null) {
-                    startActivity(intent);
-                }
-            }
-        });
-
-        closeImageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
     }
 
-    public static PreviewFragment newInstance(int collectionId){
+    public static PreviewFragment newInstance(int collectionId) {
         PreviewFragment fragment = new PreviewFragment();
 
         Bundle args = new Bundle();

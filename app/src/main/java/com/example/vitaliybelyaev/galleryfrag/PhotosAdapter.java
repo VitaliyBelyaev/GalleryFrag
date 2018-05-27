@@ -15,7 +15,7 @@ import java.util.List;
 
 public class PhotosAdapter extends RecyclerView.Adapter<PhotosAdapter.PhotoVH> {
 
-    private List<PreviewPhoto> previewPhotos = Collections.EMPTY_LIST;
+    private List<PreviewPhoto> previewPhotos;
 
     public PhotosAdapter(List<PreviewPhoto> previewPhotos) {
         this.previewPhotos = previewPhotos;

@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">GalleryFrag</string>
 
-    <string name="open_collection">View full collection</string>
+    <string name="open_in_browser">Open in browser</string>
 </resources>
