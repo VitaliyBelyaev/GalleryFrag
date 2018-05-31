@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.vitaliybelyaev.galleryfrag.domain.Collection;
+import com.example.vitaliybelyaev.galleryfrag.network.NetworkModule;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,7 +45,7 @@ public class MainFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        getApp().getApi().getCollections().enqueue(new Callback<List<Collection>>() {
+        NetworkModule.getApi().getCollections().enqueue(new Callback<List<Collection>>() {
             @Override
             public void onResponse(Call<List<Collection>> call, Response<List<Collection>> response) {
                 if(response.code() == 200){
